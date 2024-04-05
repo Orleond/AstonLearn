@@ -16,12 +16,6 @@ public class MyArray<E> implements List<E>  {
     private Object[] array;
     private boolean bubbleFlag;
     private int size;
-    Comparator<? extends E> comparator = new Comparator<E>() {
-        @Override
-        public int compare(E o1, E o2) {
-            return 0;
-        }
-    };
     public MyArray() {
         array = new Object[10];
         size = 0;
@@ -178,7 +172,7 @@ public class MyArray<E> implements List<E>  {
             this.add((E)col);
         }
         bubbleFlag = false;
-        return false;
+        return true;
     }
 
     @Override
