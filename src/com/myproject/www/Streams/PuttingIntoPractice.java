@@ -6,10 +6,12 @@ package com.myproject.www.Streams;
  * 3. Найти всех трейдеров из Кембриджа и отсортировать их по именам.
  * 4. Вернуть строку со всеми именами трейдеров, отсортированными в алфавитном порядке.
  * 5. Выяснить, существует ли хоть один трейдер из Милана.
+ * 6. Вывести суммы всех транзакций трейдеров из Кембриджа.
  */
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -62,5 +64,13 @@ public class PuttingIntoPractice {
                 .map(x -> x.getTrader().getCity())
                 .anyMatch(x -> x.equals("Milan"));
         System.out.println(b ? "Есть" : "Нет");
+
+        System.out.println("Вывод суммы всех транзакций трейдеров из Кембриджа:");
+        Optional<Integer> sum = transactions.stream()
+                .filter(x -> x.getTrader().getCity().equals("Cambridge"))
+                .map(Transaction::getValue)
+                .reduce(Integer::sum);
+        System.out.println(sum.get());
+
     }
 }
