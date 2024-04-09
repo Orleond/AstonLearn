@@ -8,6 +8,7 @@ package com.myproject.www.Streams;
  * 5. Выяснить, существует ли хоть один трейдер из Милана.
  * 6. Вывести суммы всех транзакций трейдеров из Кембриджа.
  * 7. Какова максимальная сумма среди всех транзакций?
+ * 8. Найти транзакцию с минимальной суммой.
  */
 import java.util.Arrays;
 import java.util.Comparator;
@@ -78,5 +79,11 @@ public class PuttingIntoPractice {
                 .map(Transaction::getValue)
                 .max(Comparator.naturalOrder());
         System.out.println(maximum.get());
+
+        System.out.println("Вывод транзакции с минимальной суммой.");
+        Optional<Integer> minimum = transactions.stream()
+                .map(Transaction::getValue)
+                .min(Comparator.naturalOrder());
+        System.out.println(minimum.get());
     }
 }
