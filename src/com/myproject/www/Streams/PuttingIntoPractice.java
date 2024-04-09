@@ -2,10 +2,13 @@ package com.myproject.www.Streams;
 /*
  * Выполнено:
  * 1. Найти все транзакции за 2011 год и отсортировать их по сумме (от меньшей к большей).
+ * 2. Вывести список неповторяющихся городов, в которых работают трейдеры.
  */
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class PuttingIntoPractice {
 
@@ -28,6 +31,12 @@ public class PuttingIntoPractice {
         transactions.stream()
                 .filter(t -> t.getYear() == 2011)
                 .sorted(Comparator.comparingInt(Transaction::getValue))
+                .forEach(System.out::println);
+
+
+        System.out.println("\nСписок неповторяющихся городов, в которых работают трейдеры:");
+        Stream.of(raoul.getCity(), mario.getCity(), alan.getCity(), brian.getCity())
+                .collect(Collectors.toSet())
                 .forEach(System.out::println);
     }
 }
