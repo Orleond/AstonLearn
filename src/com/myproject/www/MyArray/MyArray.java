@@ -8,7 +8,7 @@
  * список иои нет.
  */
 
-package com.myproject.www;
+package com.myproject.www.MyArray;
 
 import java.util.*;
 
@@ -279,4 +279,5 @@ public class MyArray<E> implements List<E>  {
         }
         array = temp;
     }
+
 }
