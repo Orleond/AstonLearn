@@ -4,9 +4,9 @@ package com.myproject.www.Streams;
  * 1. Найти все транзакции за 2011 год и отсортировать их по сумме (от меньшей к большей).
  * 2. Вывести список неповторяющихся городов, в которых работают трейдеры.
  * 3. Найти всех трейдеров из Кембриджа и отсортировать их по именам.
+ * 4. Вернуть строку со всеми именами трейдеров, отсортированными в алфавитном порядке.
  */
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -37,15 +37,23 @@ public class PuttingIntoPractice {
 
 
         System.out.println("\nСписок неповторяющихся городов, в которых работают трейдеры:");
-        Stream.of(raoul.getCity(), mario.getCity(), alan.getCity(), brian.getCity())
-                .collect(Collectors.toSet())
+        transactions.stream()
+                .map(x -> x.getTrader().getCity())
+                .distinct()
                 .forEach(System.out::println);
 
-        System.out.println("\nОтсортированный по именам список трейдеров их Кэмбриджа");
+        System.out.println("\nОтсортированный по именам список трейдеров из Кэмбриджа");
         Stream.of(raoul, mario, alan, brian)
                 .filter(o -> o.getCity().equals("Cambridge"))
                 .sorted(Comparator.comparing(Trader::getName))
                 .forEach(System.out::println);
 
+        System.out.println("\nВернуть строку со всеми именами трейдеров, отсортированными в алфавитном порядке");
+        String s = transactions.stream()
+                .map(x -> x.getTrader().getName())
+                .distinct()
+                .sorted()
+                .collect(Collectors.joining(", "));
+        System.out.println(s);
     }
 }
