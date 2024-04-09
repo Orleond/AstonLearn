@@ -5,6 +5,7 @@ package com.myproject.www.Streams;
  * 2. Вывести список неповторяющихся городов, в которых работают трейдеры.
  * 3. Найти всех трейдеров из Кембриджа и отсортировать их по именам.
  * 4. Вернуть строку со всеми именами трейдеров, отсортированными в алфавитном порядке.
+ * 5. Выяснить, существует ли хоть один трейдер из Милана.
  */
 import java.util.Arrays;
 import java.util.Comparator;
@@ -55,5 +56,11 @@ public class PuttingIntoPractice {
                 .sorted()
                 .collect(Collectors.joining(", "));
         System.out.println(s);
+
+        System.out.println("\nВыяснить, существует ли хоть один трейдер из Милана.");
+        boolean b = transactions.stream()
+                .map(x -> x.getTrader().getCity())
+                .anyMatch(x -> x.equals("Milan"));
+        System.out.println(b ? "Есть" : "Нет");
     }
 }
