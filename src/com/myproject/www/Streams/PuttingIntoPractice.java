@@ -3,8 +3,10 @@ package com.myproject.www.Streams;
  * Выполнено:
  * 1. Найти все транзакции за 2011 год и отсортировать их по сумме (от меньшей к большей).
  * 2. Вывести список неповторяющихся городов, в которых работают трейдеры.
+ * 3. Найти всех трейдеров из Кембриджа и отсортировать их по именам.
  */
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,5 +40,12 @@ public class PuttingIntoPractice {
         Stream.of(raoul.getCity(), mario.getCity(), alan.getCity(), brian.getCity())
                 .collect(Collectors.toSet())
                 .forEach(System.out::println);
+
+        System.out.println("\nОтсортированный по именам список трейдеров их Кэмбриджа");
+        Stream.of(raoul, mario, alan, brian)
+                .filter(o -> o.getCity().equals("Cambridge"))
+                .sorted(Comparator.comparing(Trader::getName))
+                .forEach(System.out::println);
+
     }
 }
