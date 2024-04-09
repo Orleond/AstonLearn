@@ -7,6 +7,7 @@ package com.myproject.www.Streams;
  * 4. Вернуть строку со всеми именами трейдеров, отсортированными в алфавитном порядке.
  * 5. Выяснить, существует ли хоть один трейдер из Милана.
  * 6. Вывести суммы всех транзакций трейдеров из Кембриджа.
+ * 7. Какова максимальная сумма среди всех транзакций?
  */
 import java.util.Arrays;
 import java.util.Comparator;
@@ -70,7 +71,12 @@ public class PuttingIntoPractice {
                 .filter(x -> x.getTrader().getCity().equals("Cambridge"))
                 .map(Transaction::getValue)
                 .reduce(Integer::sum);
-        System.out.println(sum.get());
+        System.out.println("\n" + sum.get());
 
+        System.out.println("\nМаксимальная сумма среди всех транзакций:");
+        Optional<Integer> maximum = transactions.stream()
+                .map(Transaction::getValue)
+                .max(Comparator.naturalOrder());
+        System.out.println(maximum.get());
     }
 }
