@@ -3,9 +3,7 @@
  * boolean add(E), E get(int), boolean contains(Object), boolead addAll(Collection),
  * boolean remove(Object).
  *
- * Реализована сортировка пузырьком по алфавиту для строк, по возростанию для чисел
- * и по возростанию хэшкода для остальных объектов. Имеется флаг для проверки, отсортирован
- * список иои нет.
+ * Реализована сортировка пузырьком.
  */
 
 package com.myproject.www.MyArray;
