@@ -4,11 +4,11 @@ import java.util.Collection;
 import java.util.List;
 
 public interface MyList<E> {
-    public int size();
-    public boolean isEmpty();
-    public boolean add(E e);
-    public E get(int index);
-    public boolean contains(Object o);
-    public boolean addAll(Collection<? extends E> c);
-    public boolean remove(Object o);
+    int size();
+    boolean isEmpty();
+    boolean add(E e);
+    E get(int index);
+    boolean contains(Object o);
+    boolean addAll(Collection<? extends E> c);
+    boolean remove(Object o);
 }
