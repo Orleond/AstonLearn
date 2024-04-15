@@ -1,7 +1,6 @@
 package com.myproject.www.MyArray;
 
 import java.util.Collection;
-import java.util.List;
 
 public interface MyList<E> {
     int size();
