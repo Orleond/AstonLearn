@@ -10,7 +10,7 @@ package com.myproject.www.MyArray;
 
 import java.util.*;
 
-public class MyArray<E extends Comparable> implements MyList<E>  {
+public class MyArray<E extends Comparable> implements MyList<E>, Iterable<E>  {
     private Object[] array;
     private boolean bubbleFlag;
     private int size;
@@ -107,5 +107,24 @@ public class MyArray<E extends Comparable> implements MyList<E>  {
             temp[i] = array[i];
         }
         array = temp;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new MyIterator();
+    }
+
+    private class MyIterator implements Iterator<E> {
+        private int index;
+
+        @Override
+        public boolean hasNext() {
+            return index < size;
+        }
+
+        @Override
+        public E next() {
+            return (E)array[index++];
+        }
     }
 }
